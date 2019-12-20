@@ -79,18 +79,34 @@ if ($mode == 'dich') {
         font-smoothing: subpixel-antialiased;
     }
 </style>
+
 <form method="post" style="width: 1280px; margin: auto; position: relative;">
     <div style="width: 100%; display: inline-block;">
         <textarea name="string" rows="20"><?php echo $input; ?></textarea><br>
         <div style="width: 18%">
-        <label><input type="radio" name="camel" value="one" <?php echo ($type == 'one') ? 'checked="checked"' : ""; ?>/> In hoa chữ cái đầu</label> <br>
-        <label><input type="radio" name="camel" value="per" <?php echo ($type == 'per') ? 'checked="checked"' : ""; ?>/> In hoa tất cả chữ cái đầu</label><br>
-        <label><input type="radio" name="camel" value="all" <?php echo ($type == 'all') ? 'checked="checked"' : ""; ?>/> In hoa hết</label><br><br>
-        <button type="submit" name="mode" value="dich">Bỏ dấu</button>
+            <label><input type="radio" name="camel" value="one" <?php echo ($type == 'one') ? 'checked="checked"' : ""; ?>/> In hoa chữ cái đầu</label> <br>
+            <label><input type="radio" name="camel" value="per" <?php echo ($type == 'per') ? 'checked="checked"' : ""; ?>/> In hoa tất cả chữ cái đầu</label><br>
+            <label><input type="radio" name="camel" value="all" <?php echo ($type == 'all') ? 'checked="checked"' : ""; ?>/> In hoa hết</label><br><br>
+            <button type="submit" name="mode" value="dich">Bỏ dấu</button>
+            <button type="button" onclick="copyText();">copy all text</button>
         </div>
-        <textarea rows="20"><?php echo $ret; ?></textarea>
+        <textarea rows="20" id="copy"><?php echo $ret; ?></textarea>
     </div>
 </form>
+<script type="text/javascript">
+    var copyText = function () {
+        var text = document.getElementById("copy");
+        if (text && text.value) {
+            /* Select the text field */
+            text.select();
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+        }
+    };
+    setTimeout(function () {
+        copyText();
+    }, 200)
+</script>
 </body>
 <footer></footer>
 </html>
