@@ -105,7 +105,7 @@ if ($mode == 'dich') {
     };
     setTimeout(function () {
         copyText();
-    }, 200)
+    }, 300);
 </script>
 </body>
 <footer></footer>
